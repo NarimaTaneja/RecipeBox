@@ -8,6 +8,27 @@
 </head>
 <body>
 
+<nav class = "navbar navbar-default">
+	<div class="container">
+		<div class="navbar-brand">
+			<%= link_to 'Recipe Box',root_path %>
+		</div>
+		<div>
+			<% if user_signed_in? %>
+				<ul class="nav navbar-nav navbar-right">
+					<li><%= link_to "New Recipe",new_recipe_path %></li>
+					<li><%= link_to "Account",edit_user_registration_path %></li>
+					<li><%= link_to "SignOut",destroy_user_session_path,method: :delete %></li>
+			<% else %>
+				<ul class="nav navbar-nav navbar-right">
+					<li><%= link_to "SignUp",new_user_registration_path %></li>
+					<li><%= link_to "SignIn",new_user_session_path %></li>
+				</ul>
+			<% end %>
+		</div>
+	</div>
+</nav>
+
 <%= yield %>
 
 </body>

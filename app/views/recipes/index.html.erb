@@ -1,5 +1,6 @@
 <% @recipe.each do |recipe| %>
-<%= link_to recipe.title, recipe %></br>
-<% end %>
-<%= link_to 'New recipe', new_recipe_path %>
+<%= link_to image_tag(recipe.image.url(:medium)),recipe %></br>
+<%= link_to recipe.title, recipe %></br
+<% end %>                                  
 
+                                                                                                                                                                                                                                

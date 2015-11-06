@@ -9,11 +9,11 @@ class RecipesController < ApplicationController
 	end
 
 	def new 
-		@recipe = Recipe.new
+		@recipe = current_user.recipes.build
 	end
 
 	def create 
-		@recipe = Recipe.new(recipe_params)
+		@recipe = current_user.recipes.build(recipe_params)
 		if @recipe.save
 			redirect_to @recipe, notice: 'Successfully created'
 		else 
@@ -44,6 +44,6 @@ class RecipesController < ApplicationController
 		end
 
 		def recipe_params
-			params.require(:recipe).permit(:title,:description)
+			params.require(:recipe).permit(:image,:title,:description)
 		end
 end
