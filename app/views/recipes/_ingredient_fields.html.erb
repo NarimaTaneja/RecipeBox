@@ -1,0 +1,18 @@
+<div class="form-inline.clearfix">
+	<div class="nested-fields">
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="name"> 
+				<%= f.label :name %>
+			</label>
+			<div class="col-sm-6">
+				<%= f.text_field :name, class: 'form-control' %>
+			</div>
+			<%= link_to_remove_association "Remove Name", f,class: "btn btn-default" %>
+		</div>
+	</div>
+</div>
+
+
+
+
+

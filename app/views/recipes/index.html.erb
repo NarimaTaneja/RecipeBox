@@ -1,6 +1,22 @@
-<% @recipe.each do |recipe| %>
-<%= link_to image_tag(recipe.image.url(:medium)),recipe %></br>
-<%= link_to recipe.title, recipe %></br
-<% end %>                                  
+<% @recipe.each_slice(3) do |recipes| %>
+	<div class="row"> 
+		<% recipes.each do |recipe| %>
+			<div class="col-md-4">
+				<div class="recipe">
+					<div class="image_wrapper">
+						<%= link_to recipe do %>
+							<%= image_tag(recipe.image.url(:medium)) %>
+						<% end %>
+					</div>
+					<%= link_to recipe.title, recipe %>
+				</div>
+			</div>
+		<% end %>  
+	</div>
+<% end %>
+                 
+
+
+
 
                                                                                                                                                                                                                                 
