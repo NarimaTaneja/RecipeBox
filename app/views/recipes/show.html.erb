@@ -1,12 +1,12 @@
 <div class="main_content">
 		<div class="row">
 			<div id="recipe_top">
-				<div class="col-xs-4 col-sm-4 col-md-offset-1">
+				<div class="col-sm-4 col-md-offset-1">
 					<%= image_tag @recipe.image.url(:medium), class: "recipe_image" %>
 				</div>
 				
 
-				<div class="col-xs-4 col-sm-6">
+				<div class="col-sm-6">
 					<div id="recipe_info">
 						<h1><%= @recipe.title%> </h1>
 						<p> <%= @recipe.description%></p>
@@ -20,7 +20,7 @@
 		</div>
 		
 		<div class="row">
-			<div class="col-xs-5 col-sm-5 col-md-offset-1">
+			<div class="col-sm-5 col-md-offset-1">
 				<div id="ingredients">
 					<ul>
 						<% @recipe.ingredients.each do |ingredient| %>
@@ -32,7 +32,7 @@
 				</div>
 			</div>
 		
-			<div class="col-xs-5 col-sm-5">
+			<div class="col-sm-5">
 				<div id="directions">
 					<ul>
 						<% @recipe.directions.each do |direction| %>
@@ -46,9 +46,13 @@
 		</div>
 
 		<div class="row">
-			<div class="col-md-11 col-md-offset-1">
-				<%= link_to 'Back', root_path,class: "btn btn-default" %> |
+			<div class="col-md-3 col-md-offset-5">
+				<%= link_to 'Back', root_path,class: "btn btn-default" %>
 				<%if user_signed_in? %>
+					|<%= link_to like_recipe_path(@recipe), method: :put , class: "btn btn-default"  do %>
+						<span class="glyphicon glyphicon-heart" style="color:red"></span>
+							<%=	@recipe.get_upvotes.size %>
+			<% end %>
 					<%= link_to 'Edit', edit_recipe_path,class: "btn btn-default" %> |
 					<%= link_to 'Delete',recipe_path(@recipe), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-default" %> 
 				<% end %>

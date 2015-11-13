@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
-	before_action :find_recipe, only: [:show, :destroy ,:edit ,:update]
+	before_action :find_recipe, only: [:show, :destroy ,:edit ,:update,:upvote]
 
+	before_action :authenticate_user!, except: [:index,:show]
 	def index
 		@recipe = Recipe.all.order("created_at DESC")
 	end
@@ -30,6 +31,11 @@ class RecipesController < ApplicationController
 		else 
 			render 'new'
 		end
+	end
+
+	def upvote
+		@recipe.upvote_by current_user
+		redirect_to :back
 	end
 
 	def destroy
